@@ -66,5 +66,8 @@ python3 -m pip install homeassistant
 
 ## Setting up RaspBee II
 https://phoscon.de/en/raspbee2/install
-
+https://www.home-assistant.io/integrations/deconz#light
+https://hackernoon.com/how-to-transform-a-raspberrypi-into-a-universal-zigbee-and-z-wave-bridge-xy1ay3ymz
+https://mindcomponents.com/home-assistant-zigbee2mqtt-setup-with-raspbee-ii-on-raspberrypi/
+https://flemmingss.com/how-to-set-up-zigbee2mqtt-on-a-raspberry-pi-and-integrate-it-with-home-assistant/
 
