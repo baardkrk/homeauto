@@ -64,6 +64,14 @@ python3 -m pip install --upgrade pip
 python3 -m pip install homeassistant
 ```
 
+Starting Homeassistant
+```bash
+sudo -u homeassistant -H -s
+cd /srv/homeassistant
+source bin/activate
+hass
+```
+
 ## Setting up RaspBee II
 https://phoscon.de/en/raspbee2/install
 https://www.home-assistant.io/integrations/deconz#light
@@ -71,3 +79,14 @@ https://hackernoon.com/how-to-transform-a-raspberrypi-into-a-universal-zigbee-an
 https://mindcomponents.com/home-assistant-zigbee2mqtt-setup-with-raspbee-ii-on-raspberrypi/
 https://flemmingss.com/how-to-set-up-zigbee2mqtt-on-a-raspberry-pi-and-integrate-it-with-home-assistant/
 
+
+## Homeassistant as a Service (HaaaS)
+place the [`homeassistant.service`](homeassistant.service) file into `/etc/systemd/system`.
+Running the service is as simple as:
+```bash
+sudo systemctl enable homeassistant.service  # Enable service on every reboot
+sudo systemctl daemon-reload  # Reload to include new service
+sudo systemctl start homeassistant.service
+sudo systemctl stop homeassistant.service
+sudo systemctl status homeassistant.service
+```
