@@ -1,0 +1,94 @@
+---
+- hosts: homeassistant
+
+  pre_tasks:
+    - name: Update APT cache if needed
+      apt: cache_update=true cache_valid_time=3600
+
+  tasks:
+    # GENERAL SETUP
+    - name: Adding python repository
+      apt_repository: repo=ppa:deadsnakes/ppa state=present apt_cache=true
+    - name: Install python 3.9
+      apt: 
+        name: ['python3.9', 'python3.9-venv', 'curl', 'gnupg2']
+        apt_cache: true
+        state: present
+    
+    # HOME ASSISTANT
+    - name: General Homeassistant dependencies
+      apt:
+        name: ['libffi-dev', 'libssl-dev', 'libjpeg-dev', 'zlib1g-dev', 'tzdata',
+        'autoconf', 'build-essential', 'libopenjp2-7', 'libtiff5', 'libturbojpeg']
+        apt_cache: true
+        state: present
+    - name: i2c group
+      become: true
+      group:
+        name: i2c
+        state: present
+    - name: Homeassistant user exists
+      user:
+        name: homeassistant
+        state: present
+        groups: ['dialout', 'i2c']
+        
+    - name: Add gpiomem to dialout
+      become: true
+      file:
+        path: /dev/gpiomem
+        group: dialout
+        mode: 0660
+    - name: Fix GPIO pins
+      become: true
+      file:
+        path: /dev/i2c-1
+        group: i2c
+        mode: 0660
+
+    ## RASPBEE II
+    - name: Install Phoscon
+      apt:
+        name: ['i2c-tools' 'build-essential' 'raspberrypi-kernel-headers']
+        apt_cache: true
+        state: present
+    - name: Download Phoscon RaspbeeII-RTC
+      git:
+        repo: https://github.com/dresden-elektronik/raspbee2-rtc.git
+        dest: /apps/
+    - name: Build Phoscon Raspbee2 RTC
+      make:
+        chdir: /apps/raspbee2-rtc
+        targets: install
+
+    - name: BUS tools
+      apt:
+        name: ['i2c-tools', 'libi2c-dev', 'python3-smbus']
+        apt_cache: true
+        state: present
+    - name: Phoscon Key
+      apt_key:
+        url: https://phoscon.de/apt/deconz.pub.key
+        state: presente
+    - name: Add phoscon repository
+      apt_repository:
+        repo: deb http://phoscon.de/apt/deconz {{ ansible_distribution_release }} main
+        state: present
+    - name: Install Deconz
+      apt:
+        name: ['deconz']
+        apt_cache: true
+        state: present
+
+    # VPN & SECURITY
+    # - name: Install Fail2ban
+
+    # - name: Set up wireguard
+
+
+    # GAMES
+    # - name: Steam User
+
+    # MATRIX SERVER
+    # https://theselfhostingblog.com/posts/self-hosting-your-own-matrix-server-on-a-raspberry-pi/
+    
