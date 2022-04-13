@@ -1,0 +1,277 @@
+    1  passwd
+    2  raspi-config
+    3  sudo raspi-config
+    4  ls
+    5  pwd
+    6  sudo apt-get update
+    7  sudo apt-get upgrade
+    8  ls -l /dev | grep dialout
+    9  ls -l /dev | grep i2c
+   10  ls /dev | grep i2c
+   11  sudo apt-add-repository ppa:deadsnakes/ppa
+   12  sudo add-apt-repository ppa:deadsnakes/ppa
+   13  sudo apt-add-repository ppa:deadsnakes/ppa
+   14  sudo apt-get install software-properties-common
+   15  sudo apt-add-repository ppa:deadsnakes/ppa
+   16  sudo apt install i2c-tools build-essential raspberrypi-kernel-headers 
+   17  git clone https://github.com/dresden-elektronik/raspbee2-rtc
+   18  sudo apt install git
+   19  git clone https://github.com/dresden-elektronik/raspbee2-rtc.git
+   20  cd raspbee2-rtc/
+   21  make
+   22  sudo make install
+   23  sudo reboot
+   24  sudo hwclock --systohc
+   25  sudo hwclock --verbosee
+   26  sudo hwclock --verbose
+   27  wget -O - http://phoscon.de/apt/deconz.pub.key |            sudo apt-key add -
+   28  sudo sh -c "echo 'deb http://phoscon.de/apt/deconz \
+   29              $(lsb_release -cs) main' > \
+   30              /etc/apt/sources.list.d/deconz.list"
+   31  sudo apt update
+   32  sudo apt install deconz
+   33  python3 --verbose
+   34  python3 --version
+   35  sudo apt-get install -y python3 python3-dev python3-venv python3-pip libffi-dev libssl-dev libjpeg-dev zlib1g-dev autoconf build-essential libopenjp2-7 libtiff5 libturbojpeg0 tzdata
+   36  sudo useradd -rm homeassistant -G dialout,gpio,i2c
+   37  sudo mkdir /srv/homeassistant
+   38  sudo chown homeassistant:homeassistant /srv/homeassistant
+   39  sudo -u homeassistant -H -s
+   40  sudo nano /etc/systemd/system
+   41  sudo nano /etc/systemd/system/homeassistant.service
+   42  sudo systemctl enable homeassistant.service
+   43  sudo systemctl daemon-reload
+   44  sudo systemctl start homeassistant.service 
+   45  sudo apt install mosquitto mosquitto-clients 
+   46  sudo systemctl enable mosquitto.service
+   47  mosquitto -v
+   48  sudo dmesg
+   49  sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+   50  sudo apt-get install -y nodejs git make g++ gcc
+   51  sudo git clone https://github.com/Koenkk/zigbee2mqtt.git /opt/zigbee2mqtt
+   52  sudo chown -R pi:pi /opt/zigbee2mqtt/
+   53  cd /opt/zigbee2mqtt/
+   54  npm ci
+   55  sudo service dhcpcd status
+   56  sudo nano /etc/dhcpcd.conf
+   57  sudo reboot
+   58  nano /opt/zigbee2mqtt/data/configuration.yaml 
+   59  sudo nano /etc/systemd/system/zigbee2mqtt.service
+   60  sudo systemctl enable zigbee2mqtt.service 
+   61  sudo reboot
+   62  mosquitto_pub -h localhost -t "mqtt/mylifeup" -m "Hello World"
+   63  mosquitto_sub -h localhost -t "mqtt/mylifeup"
+   64  sudo systemctl status zigbee2mqtt.service 
+   65  nano /opt/zigbee2mqtt/data/configuration.yaml 
+   66  ls -a /dev | grep ttyAMA
+   67  ls -l /dev | grep ttyAMA
+   68  sudo systemctl status mosquitt
+   69  sudo systemctl status mosquitto
+   70  nano /opt/zigbee2mqtt/data/configuration.yaml 
+   71  mosquitto_sub -h localhost -t "mqtt/pimylifeup"
+   72  tmux
+   73  sudo apt install tmux
+   74  tmux
+   75  sudo reboot
+   76  sudo systemctl status zigbee2mqtt.service 
+   77  nano /opt/zigbee2mqtt/data/configuration.yaml 
+   78  sudo systemctl reload-daemon
+   79  sudo systemctl daemon-reload
+   80  sudo systemctl status zigbee2mqtt.service 
+   81  nano /opt/zigbee2mqtt/data/configuration.yaml 
+   82  sudo systemctl journal zigbee2mqtt.service 
+   83  journalctl -u zigbee2mqtt.service
+   84  groups
+   85  ls -l /dev | grep ttyAMA
+   86  ls -l /dev | grep i2c
+   87  ls -l /srv/serial/by-id
+   88  test -w /dev/ttyAMA0 && echo success || echo failure
+   89  nano /opt/zigbee2mqtt/data/configuration.yaml 
+   90  nano /etc/systemd/system/zigbee2mqtt.service 
+   91  sudo systemctl stop zigbee2mqtt.service 
+   92  nano /etc/systemd/system/zigbee2mqtt.service 
+   93  cd /opt/zigbee2mqtt/
+   94  sudo DEBUG=zigbee-herdsman* /bin/npm start
+   95  nano data/configuration.yaml 
+   96  sudo DEBUG=zigbee-herdsman* /bin/npm start
+   97  ls /dev/tty
+   98  list /dev/tty
+   99  nano data/configuration.yaml 
+  100  ls /dev/ | grep tty
+  101  gpiotest
+  102  nano data/configuration.yaml 
+  103  sudo DEBUG=zigbee-herdsman* /bin/npm start
+  104  cd
+  105  sudo systemctl start zigbee2mqtt.service 
+  106  sudo reboot
+  107  sudo journalctl zigbee2mqtt.service
+  108  sudo systemctl status zigbee2mqtt.service 
+  109  deconz
+  110  sudo apt install deconz
+  111  deconz
+  112  sudo reboot
+  113  journalctl -u zigbee2mqtt.service
+  114  sudo systemctl status zigbee2mqtt.service 
+  115  cd /opt/zigbee2mqtt/data
+  116  ls
+  117  nano hue_wha.js
+  118  nano configuration.yaml 
+  119  ls
+  120  nano configuration.yaml 
+  121  cd
+  122  sudo systemctl daemon-reload
+  123  sudo systemctl status zigbee2mqtt.service 
+  124  cd /opt/zigbee2mqtt/data/
+  125  ls
+  126  nano hue_wha.js 
+  127  nano configuration.yaml 
+  128  nano hue_wha.js 
+  129  sudo systemctl daemon-reload
+  130  sudo systemctl status zigbee2mqtt.service 
+  131  sudo reboot
+  132  sudo -u homeassistant -H -s
+  133  sudo systemctl daemon-reload
+  134  sudo reboot
+  135  sudo -u homeassistant -H -s
+  136  sudo systemctl status homeassistant.service 
+  137  sudo reboot
+  138  sudo systemctl status zigbee2mqtt.service 
+  139  sudo systemctl stop zigbee2mqtt.service 
+  140  sudo systemctl start zigbee2mqtt.service 
+  141  sudo systemctl status mosquitto
+  142  ls
+  143  cd /opt/zigbee2mqtt/data
+  144  ls
+  145  cat configuration.yaml 
+  146  sudo systemctl status zigbee2mqtt.service 
+  147  sudo journalctl -u zigbee2mqtt.service
+  148  sudo journalctl -e zigbee2mqtt.service
+  149  sudo journalctl -ue zigbee2mqtt.service
+  150  sudo journalctl -u zigbee2mqtt.service
+  151  ls
+  152  sudo systemctl stop zigbee2mqtt.service 
+  153  ls -a
+  154  cd ..
+  155  ls
+  156  nano /etc/systemd/system/zigbee2mqtt.service 
+  157  /bin/npm start
+  158  ls -la /opt/zigbee2mqtt/data/log/2022-01-31.10-51-42/log.txt 
+  159  ls -la
+  160  cd data/log/
+  161  ls
+  162  ls -l
+  163  cd ..
+  164  ls'
+  165  '
+  166  ls
+  167  cd log
+  168  ls
+  169  rm *
+  170  sudo rm -rf *
+  171  cd ..
+  172  ls
+  173  sudo nano /etc/systemd/system/zigbee2mqtt.service 
+  174  cd
+  175  sudo reboot
+  176  cat /boot/config.txt 
+  177  cat /etc/dhcpcd.conf 
+  178  ls -l /dev | grep ttyAMA
+  179  cat /opt/zigbee2mqtt/data/configuration.yaml 
+  180  cat /opt/zigbee2mqtt/data/hue_wha.js 
+  181  sudo -u homeassistant -H -s
+  182  sudo reboot
+  183  sudo -u homeassistant -H -s
+  184  ls
+  185  sudo -u homeassistant -H -s
+  186  sudo systemctl restart homeassistant.service 
+  187  sudo -u homeassistant -H -s
+  188  sudo systemctl restart homeassistant.service 
+  189  sudo -u homeassistant -H -s
+  190  sudo systemctl restart homeassistant.service 
+  191  sudo -u homeassistant -H -s
+  192  sudo systemctl restart homeassistant.service 
+  193  sudo -u homeassistant -H -s
+  194  ping 8.8.8.8
+  195  vcgencmd measure_temp
+  196  ls
+  197  cat /etc/ssh/sshd_config
+  198  sudo nano /etc/ssh/sshd_config
+  199  sudo reboot
+  200  ls
+  201  sudo -u homeassistant -H -s
+  202  curl -L https://install.pivpn.io | bash
+  203  pivpn help
+  204  sudo apt update
+  205  sudo apt upgrade
+  206  sudo reboot
+  207  pivpn add
+  208  cd configs
+  209  ls
+  210  cat Bards_OnePlus.conf 
+  211  pivpn -qr
+  212  pivpn list
+  213  pivpn status
+  214  pivpn clients
+  215  pivpn -d
+  216  pivpn clients
+  217  pivpn list
+  218  pivpn -d
+  219  sudo -u homeassistant -H -s
+  220  sudo apt install vim
+  221  sudo -u homeassistant -H -s
+  222  sudo systemctl restart homeassistant.service 
+  223  sudo -u homeassistant -H -s
+  224  sudo systemctl restart homeassistant.service 
+  225  sudo -u homeassistant -H -s
+  226  sudo systemctl restart homeassistant.service 
+  227  sudo -u homeassistant -H -s
+  228  sudo systemctl restart homeassistant.service 
+  229  sudo -u homeassistant -H -s
+  230  ls
+  231  cd configs/
+  232  ls
+  233  cat Bards_OnePlus.conf 
+  234  cd ..
+  235  ls
+  236  ls /
+  237  cd 
+  238  ls -a
+  239  sudo -u homeassistant -H -s
+  240  sudo systemctl restart homeassistant.service 
+  241  sudo -u homeassistant -H -s
+  242  sudo systemctl restart homeassistant.service 
+  243  cd /etc/apt/sources.list
+  244  cat /etc/apt/sources.list
+  245  cd /etc/apt/sources.list.d/
+  246  ls
+  247  cat raspi.list 
+  248  cat nodesource.list 
+  249  cat deconz.list 
+  250  sudo apt update
+  251  sudo apt list --upgradable
+  252  python3 --version
+  253  ls
+  254  cd
+  255  apt list --installed | grep python
+  256  apt-cache madison python3.9
+  257  history | grep apt
+  258  history | grep curl
+  259  history | grep wget
+  260  ls
+  261  cd raspbee2-rtc/
+  262  ls
+  263  ls -a
+  264  cd .git
+  265  ls
+  266  cd refs/
+  267  ls
+  268  cd remotes/
+  269  ls
+  270  cd origin/
+  271  ls
+  272  cat HEAD 
+  273  cd ../../
+  274  cd ..
+  275  ls
+  276  cat config
+  277  history

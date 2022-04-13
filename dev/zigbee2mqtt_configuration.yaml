@@ -1,0 +1,21 @@
+homeassistant: true
+permit_join: false
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://localhost
+  keepalive: 60
+  reject_unauthorized: true
+  version: 4
+serial:
+  port: /dev/serial0
+  adapter: deconz
+frontend:
+  port: 8088
+  host: 192.168.1.XX
+advanced:
+  log_level: debug
+  network_key: GENERATE
+
+availability: true
+external_converters:
+  - hue_wha.js

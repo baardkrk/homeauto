@@ -1,8 +1,10 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "base"
+  # config.vm.box = "gvfoster/raspbian"
+  config.vm.box = "PersistentCoder/raspberry-pi-desktop-32bit"
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "playbooks/homeassistant.yml"
+  end
   
-  
-
 end
